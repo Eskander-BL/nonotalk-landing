@@ -43,16 +43,16 @@
 }
 
 :root {
-  --primary: #8b5cf6;
+  --primary: #d946ef;
   --primary-foreground: #ffffff;
-  --sidebar-primary: #8b5cf6;
+  --sidebar-primary: #d946ef;
   --sidebar-primary-foreground: #ffffff;
-  --chart-1: #8b5cf6;
-  --chart-2: #7c3aed;
-  --chart-3: #6d28d9;
-  --chart-4: #a78bfa;
-  --chart-5: #c4b5fd;
-  --radius: 0.5rem;
+  --chart-1: #d946ef;
+  --chart-2: #c026d3;
+  --chart-3: #a21caf;
+  --chart-4: #e879f9;
+  --chart-5: #f0abfc;
+  --radius: 0.625rem;
   --background: #ffffff;
   --foreground: #1f2937;
   --card: #ffffff;

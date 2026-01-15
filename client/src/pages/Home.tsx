@@ -239,7 +239,7 @@ export default function Home() {
               Tester NonoTalk
             </button>
             <button
-              onClick={() => window.location.href = 'mailto:contact@nonotalk.fr'}
+              onClick={() => setOpenModal('contact')}
               className="px-8 py-3 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:bg-opacity-10 transition-colors"
             >
               Nous contacter

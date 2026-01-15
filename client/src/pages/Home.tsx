@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { CheckCircle2, ArrowRight, Users, Zap, Lightbulb, Shield, Heart } from 'lucide-react';
+import ContactModal from '@/components/ContactModal';
 
 export default function Home() {
   const [openModal, setOpenModal] = useState<string | null>(null);
@@ -47,7 +48,7 @@ export default function Home() {
               Tester NonoTalk
             </button>
             <button
-              onClick={() => window.location.href = 'mailto:contact@nonotalk.fr'}
+              onClick={() => setOpenModal('contact')}
               className="px-8 py-3 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
             >
               Échanger avec nous
@@ -321,6 +322,12 @@ export default function Home() {
           </div>
         </DialogContent>
       </Dialog>
+
+      {/* Contact Modal */}
+      <ContactModal
+        isOpen={openModal === 'contact'}
+        onClose={() => setOpenModal(null)}
+      />
     </div>
   );
 }

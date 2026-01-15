@@ -1,130 +1,115 @@
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Info, CheckCircle2, Zap, Users, Shield, Lightbulb } from 'lucide-react';
+import { CheckCircle2, ArrowRight, Users, Zap, Lightbulb, Shield, Heart } from 'lucide-react';
 
 export default function Home() {
   const [openModal, setOpenModal] = useState<string | null>(null);
 
-  const ModalContent = ({ id, title, children }: { id: string; title: string; children: React.ReactNode }) => (
-    <Dialog open={openModal === id} onOpenChange={(open) => setOpenModal(open ? id : null)}>
-      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-gray-900">{title}</DialogTitle>
-        </DialogHeader>
-        <div className="space-y-4 text-gray-700">{children}</div>
-      </DialogContent>
-    </Dialog>
-  );
-
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section - Gradient Violet to Rose */}
-      <section className="min-h-screen flex items-center justify-center px-4 py-20 bg-gradient-to-br from-fuchsia-500 via-purple-500 to-pink-400">
-        <div className="max-w-2xl w-full bg-white rounded-3xl shadow-2xl p-12 md:p-16">
-          {/* Logo */}
-          <div className="flex justify-center mb-8">
-            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-fuchsia-500 to-pink-400 flex items-center justify-center shadow-lg">
-              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center">
-                <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-fuchsia-600 to-pink-500">✓</span>
-              </div>
-            </div>
+      {/* Navbar */}
+      <nav className="fixed top-0 w-full bg-white border-b border-gray-200 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <img src="/logo.png" alt="NonoTalk" className="w-10 h-10" />
+            <span className="text-xl font-bold text-gray-900">NonoTalk</span>
           </div>
-
-          {/* Title */}
-          <h1 className="text-center text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
-            NonoTalk
-          </h1>
-
-          {/* Subtitle */}
-          <p className="text-center text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed font-semibold">
-            Comprendre ce que <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-600 to-pink-600">vivent vos équipes</span>, avant que les problèmes n'apparaissent
-          </p>
-
-          {/* Description */}
-          <p className="text-center text-gray-600 text-base mb-10 leading-relaxed">
-            NonoTalk est une solution d'écoute et d'analyse intelligente, conçue pour aider les RH et managers à mieux comprendre le ressenti des équipes et à prendre des décisions plus claires.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Button
-              size="lg"
-              className="font-bold text-base bg-gradient-to-r from-fuchsia-600 to-pink-500 text-white hover:shadow-xl transition-all hover:scale-105"
-              onClick={() => window.open('https://www.nonotalk.fr', '_blank')}
-            >
-              Tester NonoTalk
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="font-bold text-base text-fuchsia-600 border-2 border-fuchsia-300 hover:bg-fuchsia-50"
-              onClick={() => window.location.href = 'mailto:contact@nonotalk.fr'}
-            >
-              Échanger avec nous
-            </Button>
-          </div>
-
-          {/* Modal Link */}
-          <div className="flex justify-center">
+          <div className="hidden md:flex gap-8 items-center">
+            <a href="#probleme" className="text-gray-600 hover:text-gray-900 text-sm font-medium">Problème</a>
+            <a href="#solution" className="text-gray-600 hover:text-gray-900 text-sm font-medium">Solution</a>
+            <a href="#comment" className="text-gray-600 hover:text-gray-900 text-sm font-medium">Comment ça marche</a>
+            <a href="#benefices" className="text-gray-600 hover:text-gray-900 text-sm font-medium">Bénéfices</a>
             <button
-              onClick={() => setOpenModal('approach')}
-              className="flex items-center gap-2 text-fuchsia-600 hover:text-fuchsia-700 font-semibold text-sm transition-colors hover:gap-3"
+              onClick={() => window.open('https://www.nonotalk.fr', '_blank')}
+              className="px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
             >
-              <Info className="w-4 h-4" />
-              En savoir plus sur notre démarche
+              Tester
             </button>
           </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50 to-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            Comprendre ce que vivent vos équipes,
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600"> avant que les problèmes n'apparaissent</span>
+          </h1>
+          <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+            NonoTalk est une solution d'écoute et d'analyse intelligente, conçue pour aider les RH et managers à mieux comprendre le ressenti des équipes et à prendre des décisions plus claires.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <button
+              onClick={() => window.open('https://www.nonotalk.fr', '_blank')}
+              className="px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+            >
+              Tester NonoTalk
+            </button>
+            <button
+              onClick={() => window.location.href = 'mailto:contact@nonotalk.fr'}
+              className="px-8 py-3 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+            >
+              Échanger avec nous
+            </button>
+          </div>
+          <button
+            onClick={() => setOpenModal('approach')}
+            className="text-blue-600 hover:text-blue-700 font-semibold flex items-center justify-center gap-2 mx-auto"
+          >
+            <span>En savoir plus sur notre démarche</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
       </section>
 
       {/* Problem Section */}
-      <section className="px-4 py-20 md:py-28 bg-gradient-to-b from-gray-50 to-white">
+      <section id="probleme" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-fuchsia-50 via-purple-50 to-pink-50 rounded-2xl p-8 md:p-12 border border-fuchsia-200 shadow-lg">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-              Les difficultés humaines sont <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-600 to-pink-600">souvent détectées trop tard</span>
-            </h2>
-            <div className="space-y-4">
-              {[
-                'les salariés n\'osent pas toujours exprimer leurs difficultés,',
-                'les signaux faibles passent inaperçus,',
-                'les décisions RH sont prises sans visibilité claire,',
-                'le stress, les arrêts de travail et les départs s\'accumulent.'
-              ].map((item, idx) => (
-                <div key={idx} className="flex gap-3 items-start">
-                  <CheckCircle2 className="w-5 h-5 text-fuchsia-500 flex-shrink-0 mt-0.5" />
-                  <p className="text-gray-700 font-medium">{item}</p>
-                </div>
-              ))}
-            </div>
-            <p className="mt-8 text-lg text-gray-800 font-semibold">
-              → Résultat : <span className="text-fuchsia-600">les problèmes sont découverts quand ils sont déjà coûteux.</span>
-            </p>
+          <div className="text-sm font-bold text-blue-600 mb-4 uppercase tracking-wider">Le problème</div>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12">
+            Les difficultés humaines sont souvent détectées trop tard
+          </h2>
+          <div className="space-y-4">
+            {[
+              'les salariés n\'osent pas toujours exprimer leurs difficultés,',
+              'les signaux faibles passent inaperçus,',
+              'les décisions RH sont prises sans visibilité claire,',
+              'le stress, les arrêts de travail et les départs s\'accumulent.'
+            ].map((item, idx) => (
+              <div key={idx} className="flex gap-4 items-start">
+                <CheckCircle2 className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
+                <p className="text-gray-700 font-medium text-lg">{item}</p>
+              </div>
+            ))}
           </div>
+          <p className="mt-10 text-xl text-gray-800 font-semibold">
+            → Résultat : <span className="text-blue-600">les problèmes sont découverts quand ils sont déjà coûteux.</span>
+          </p>
         </div>
       </section>
 
       {/* Solution Section */}
-      <section className="px-4 py-20 md:py-28 bg-white">
+      <section id="solution" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
-            Une écoute intelligente au service de la <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-600 to-pink-600">décision RH</span>
+          <div className="text-sm font-bold text-blue-600 mb-4 uppercase tracking-wider">La solution</div>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12">
+            Une écoute intelligente au service de la décision RH
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
             {[
-              { icon: Users, title: 'Écoute', desc: 'Offrir un espace d\'expression confidentiel aux collaborateurs' },
+              { icon: Heart, title: 'Écoute', desc: 'Offrir un espace d\'expression confidentiel aux collaborateurs' },
               { icon: Zap, title: 'Analyse', desc: 'Analyser les tendances et ressentis de manière collective' },
               { icon: Lightbulb, title: 'Décision', desc: 'Transformer les retours humains en insights clairs et actionnables' }
             ].map((item, idx) => (
-              <div key={idx} className="bg-gradient-to-br from-fuchsia-50 to-pink-50 rounded-xl p-8 border border-fuchsia-200 hover:shadow-lg transition-shadow">
-                <item.icon className="w-8 h-8 text-fuchsia-600 mb-4" />
+              <div key={idx} className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-shadow">
+                <item.icon className="w-8 h-8 text-blue-600 mb-4" />
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
                 <p className="text-gray-700">{item.desc}</p>
               </div>
             ))}
           </div>
-          <p className="mt-10 text-center text-gray-700 text-lg">
+          <p className="text-center text-gray-700 text-lg">
             👉 L'objectif n'est pas de surveiller,<br />
             👉 mais de mieux comprendre pour mieux agir.
           </p>
@@ -132,12 +117,13 @@ export default function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section className="px-4 py-20 md:py-28 bg-gradient-to-b from-gray-50 to-white">
+      <section id="comment" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+          <div className="text-sm font-bold text-blue-600 mb-4 uppercase tracking-wider">Processus</div>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 text-center">
             Comment ça marche
           </h2>
-          <div className="space-y-6">
+          <div className="space-y-8">
             {[
               { num: '1', title: 'Écoute', desc: 'Les collaborateurs s\'expriment de manière simple et confidentielle (questionnaires courts / interactions guidées).' },
               { num: '2', title: 'Analyse intelligente', desc: 'L\'IA analyse les tendances, détecte les signaux faibles et identifie les sujets prioritaires.' },
@@ -145,7 +131,7 @@ export default function Home() {
             ].map((step, idx) => (
               <div key={idx} className="flex gap-6 items-start">
                 <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-full bg-gradient-to-br from-fuchsia-600 to-pink-500 text-white font-bold text-lg">
+                  <div className="flex items-center justify-center h-12 w-12 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 text-white font-bold text-lg">
                     {step.num}
                   </div>
                 </div>
@@ -160,9 +146,10 @@ export default function Home() {
       </section>
 
       {/* Benefits Section */}
-      <section className="px-4 py-20 md:py-28 bg-white">
+      <section id="benefices" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+          <div className="text-sm font-bold text-blue-600 mb-4 uppercase tracking-wider">Avantages</div>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 text-center">
             Les bénéfices pour les RH & managers
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
@@ -173,8 +160,8 @@ export default function Home() {
               'Gain de temps dans l\'analyse',
               'Dialogue social renforcé'
             ].map((benefit, idx) => (
-              <div key={idx} className="flex gap-4 items-start p-6 bg-gradient-to-br from-fuchsia-50 to-pink-50 rounded-xl border border-fuchsia-200">
-                <CheckCircle2 className="w-6 h-6 text-fuchsia-600 flex-shrink-0 mt-0.5" />
+              <div key={idx} className="flex gap-4 items-start p-6 bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-shadow">
+                <CheckCircle2 className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
                 <p className="text-gray-900 font-semibold">{benefit}</p>
               </div>
             ))}
@@ -188,13 +175,14 @@ export default function Home() {
       </section>
 
       {/* Confidentiality Section */}
-      <section className="px-4 py-20 md:py-28 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+          <div className="text-sm font-bold text-blue-600 mb-4 uppercase tracking-wider">Confiance</div>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 text-center">
             Confidentialité & Responsabilité
           </h2>
-          <div className="bg-gradient-to-br from-fuchsia-50 to-pink-50 rounded-2xl p-8 md:p-12 border border-fuchsia-200 shadow-lg mb-8">
-            <p className="text-gray-800 font-semibold mb-6 text-lg">
+          <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 md:p-12 border border-blue-200 shadow-lg mb-8">
+            <p className="text-gray-800 font-semibold mb-8 text-lg">
               NonoTalk ne remplace pas un psychologue, n'est pas un outil médical, n'analyse jamais les individus, et fonctionne uniquement sur des données agrégées et anonymes.
             </p>
             <div className="grid md:grid-cols-3 gap-6">
@@ -204,7 +192,7 @@ export default function Home() {
                 { icon: Lightbulb, title: 'Pas de diagnostic médical' }
               ].map((item, idx) => (
                 <div key={idx} className="flex flex-col items-center text-center">
-                  <item.icon className="w-8 h-8 text-fuchsia-600 mb-3" />
+                  <item.icon className="w-8 h-8 text-blue-600 mb-3" />
                   <p className="font-semibold text-gray-900">{item.title}</p>
                 </div>
               ))}
@@ -214,7 +202,7 @@ export default function Home() {
       </section>
 
       {/* Pilot Phase Section */}
-      <section className="px-4 py-20 md:py-28 bg-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-4xl mx-auto">
           <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-8 md:p-12 border border-yellow-200 shadow-lg">
             <div className="inline-block mb-6 px-4 py-2 bg-yellow-200 text-yellow-900 rounded-full font-bold text-sm">
@@ -234,59 +222,105 @@ export default function Home() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="px-4 py-20 md:py-28 bg-gradient-to-br from-fuchsia-500 via-purple-500 to-pink-400">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 to-purple-600">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Prêt à transformer votre approche RH ?
           </h2>
-          <p className="text-white text-lg mb-10 opacity-95">
+          <p className="text-white text-xl mb-10 opacity-95">
             Rejoignez les entreprises qui repensent l'écoute et la prise de décision RH.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="font-bold text-base bg-white text-fuchsia-600 hover:bg-gray-100 hover:shadow-xl transition-all hover:scale-105"
+            <button
               onClick={() => window.open('https://www.nonotalk.fr', '_blank')}
+              className="px-8 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
             >
               Tester NonoTalk
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="font-bold text-base text-white border-2 border-white hover:bg-white hover:bg-opacity-10"
+            </button>
+            <button
               onClick={() => window.location.href = 'mailto:contact@nonotalk.fr'}
+              className="px-8 py-3 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:bg-opacity-10 transition-colors"
             >
               Nous contacter
-            </Button>
+            </button>
           </div>
         </div>
       </section>
 
-      {/* Modals */}
-      <ModalContent id="approach" title="Notre démarche">
-        <div className="space-y-6">
-          <div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Écoute et Confidentialité</h3>
-            <p>NonoTalk crée un espace sûr où les collaborateurs peuvent s'exprimer librement. Toutes les données sont traitées de manière confidentielle et anonyme. Nous ne cherchons jamais à identifier les individus, mais à comprendre les tendances collectives.</p>
+      {/* Footer */}
+      <footer className="bg-gray-900 text-gray-400 py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <img src="/logo.png" alt="NonoTalk" className="w-8 h-8" />
+                <span className="text-white font-bold">NonoTalk</span>
+              </div>
+              <p className="text-sm">Écoute intelligente pour les RH et managers.</p>
+            </div>
+            <div>
+              <h3 className="text-white font-semibold mb-4">Produit</h3>
+              <ul className="space-y-2 text-sm">
+                <li><a href="#" className="hover:text-white transition-colors">Fonctionnalités</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Tarifs</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Sécurité</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-white font-semibold mb-4">Ressources</h3>
+              <ul className="space-y-2 text-sm">
+                <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Documentation</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Support</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-white font-semibold mb-4">Légal</h3>
+              <ul className="space-y-2 text-sm">
+                <li><a href="#" className="hover:text-white transition-colors">Conditions</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Confidentialité</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Cookies</a></li>
+              </ul>
+            </div>
           </div>
-          <div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Intelligence Artificielle Responsable</h3>
-            <p>Notre approche de l'IA est centrée sur l'aide à la décision, pas sur la surveillance. Nous analysons les données agrégées pour identifier les signaux faibles et les tendances, permettant aux RH de prendre des décisions plus éclairées.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Respect et Transparence</h3>
-            <p>Nous respectons les réglementations RGPD et les bonnes pratiques en matière de protection des données. Chaque entreprise partenaire a une visibilité complète sur comment ses données sont utilisées.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Co-construction</h3>
-            <p>Nous travaillons en étroite collaboration avec nos partenaires RH pour adapter NonoTalk à leurs besoins réels. Votre feedback façonne directement l'évolution de la solution.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Limites Claires</h3>
-            <p>NonoTalk ne remplace pas un psychologue ou un médecin. Ce n'est pas un outil de diagnostic médical. Nous identifions les tendances, mais les décisions et actions restent entre les mains des RH et managers.</p>
+          <div className="border-t border-gray-800 pt-8">
+            <p className="text-center text-sm">
+              © 2026 NonoTalk. Tous droits réservés.
+            </p>
           </div>
         </div>
-      </ModalContent>
+      </footer>
+
+      {/* Modal */}
+      <Dialog open={openModal === 'approach'} onOpenChange={(open) => setOpenModal(open ? 'approach' : null)}>
+        <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-gray-900">Notre démarche</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-6 text-gray-700">
+            <div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Écoute et Confidentialité</h3>
+              <p>NonoTalk crée un espace sûr où les collaborateurs peuvent s'exprimer librement. Toutes les données sont traitées de manière confidentielle et anonyme. Nous ne cherchons jamais à identifier les individus, mais à comprendre les tendances collectives.</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Intelligence Artificielle Responsable</h3>
+              <p>Notre approche de l'IA est centrée sur l'aide à la décision, pas sur la surveillance. Nous analysons les données agrégées pour identifier les signaux faibles et les tendances, permettant aux RH de prendre des décisions plus éclairées.</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Respect et Transparence</h3>
+              <p>Nous respectons les réglementations RGPD et les bonnes pratiques en matière de protection des données. Chaque entreprise partenaire a une visibilité complète sur comment ses données sont utilisées.</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Co-construction</h3>
+              <p>Nous travaillons en étroite collaboration avec nos partenaires RH pour adapter NonoTalk à leurs besoins réels. Votre feedback façonne directement l'évolution de la solution.</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Limites Claires</h3>
+              <p>NonoTalk ne remplace pas un psychologue ou un médecin. Ce n'est pas un outil de diagnostic médical. Nous identifions les tendances, mais les décisions et actions restent entre les mains des RH et managers.</p>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

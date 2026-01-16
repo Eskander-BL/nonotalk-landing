@@ -19,12 +19,12 @@ export default function Home() {
             <a href="#probleme" className="text-gray-600 hover:text-gray-900 text-sm font-medium">Problème</a>
             <a href="#solution" className="text-gray-600 hover:text-gray-900 text-sm font-medium">Solution</a>
             <a href="#comment" className="text-gray-600 hover:text-gray-900 text-sm font-medium">Comment ça marche</a>
-            <a href="#benefices" className="text-gray-600 hover:text-gray-900 text-sm font-medium">Bénéfices</a>
+            <a href="#benefices" className="text-gray-600 hover:text-gray-900 text-sm font-medium">Avantages</a>
             <button
-              onClick={() => window.open('https://www.nonotalk.fr', '_blank')}
-              className="px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+              onClick={() => setOpenModal('contact')}
+              className="px-8 py-3 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-100 transition-colors"
             >
-              Tester
+              Échanger avec nous
             </button>
           </div>
         </div>
@@ -51,7 +51,7 @@ export default function Home() {
               onClick={() => setOpenModal('contact')}
               className="px-8 py-3 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
             >
-              Échanger avec nous
+              Nous contacter
             </button>
           </div>
           <button
@@ -242,7 +242,7 @@ export default function Home() {
               onClick={() => setOpenModal('contact')}
               className="px-8 py-3 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:bg-opacity-10 transition-colors"
             >
-              Nous contacter
+              Échanger avec nous
             </button>
           </div>
         </div>

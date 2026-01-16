@@ -24,7 +24,7 @@ export default function Home() {
               onClick={() => setOpenModal('contact')}
               className="px-8 py-3 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-100 transition-colors"
             >
-              Échanger avec nous
+              Tester
             </button>
           </div>
         </div>
@@ -240,7 +240,7 @@ export default function Home() {
             </button>
             <button
               onClick={() => setOpenModal('contact')}
-              className="px-8 py-3 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:bg-opacity-10 transition-colors"
+              className="px-8 py-3 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:bg-opacity-30 transition-colors"
             >
               Échanger avec nous
             </button>
